@@ -1,0 +1,61 @@
+html {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  background: #000;
+  font-family: "Lato", sans-serif;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  min-width: 320px;
+  min-height: 100%;
+  font-size: 1rem;
+  line-height: 1.8em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-transform: uppercase;
+
+  * + & {
+    margin-top: 2.5em;
+  }
+}
+
+a {
+  color: #B3C6E2;
+  transition: color 300ms;
+
+  &:hover {
+    color: red;
+  }
+
+  &:not([href]) {
+    &,
+    &:hover {
+      color: inherit;
+    }
+  }
+}
+
+svg,
+img {
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+.ks-highlight {
+  color: red;
+  text-transform: uppercase;
+}
+
+.ks-location {
+  opacity: .5;
+  margin-top: -1.2em;
+  line-height: 1.4em;
+}
+
+.ks-break {
+  word-break: break-all;
+}

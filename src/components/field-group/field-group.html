@@ -1,0 +1,11 @@
+{% import "./../input/input.html" as input %}
+{% import "./../button/button.html" as button %}
+
+{% macro template(placeholder='', buttonText='', value='', type='text') %}
+
+  <div class="ks-field-group">
+    {{ input.template(placeholder, value, class='ks-field-group__field ks-field-group__field--input') }}
+    {{ button.template(buttonText, class='ks-field-group__field ks-field-group__field--button') }}
+  </div>
+
+{% endmacro %}

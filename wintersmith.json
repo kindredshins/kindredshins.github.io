@@ -1,0 +1,39 @@
+{
+  "ignore": ["**/.DS_Store"],
+  "templates": "./src",
+  "locals": {
+    "url": "http://kindredshins.com",
+    "name": "Kindred Shins",
+    "owner": "@kindredshins",
+    "description": "Flamboyant, gun totting, smut peddling troubadours",
+    "analytics": "UA-87766910-1"
+  },
+  "plugins": [
+    "wintersmith-nunjucks",
+    "wintersmith-asis",
+    "wintersmith-sassify",
+    "wintersmith-browserify",
+    "./plugins/utils.js"
+  ],
+  "require": {
+    "moment": "moment",
+    "_": "lodash-fp",
+    "typogr": "typogr"
+  },
+  "markdown": {
+    "smartLists": true,
+    "smartypants": true
+  },
+  "nunjucks": {
+    "autoescape": false
+  },
+  "sassify": {
+    "outputStyle": "compressed",
+    "sourceComments": "false",
+    "sourceMap": true,
+    "includePaths": [
+      "./src",
+      "./node_modules/normalize-scss/sass"
+    ]
+  }
+}

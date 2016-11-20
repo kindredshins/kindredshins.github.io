@@ -1,0 +1,50 @@
+{% macro template(section) %}
+
+<nav class="ks-navigation" role="navigation">
+  <label
+    class="ks-navigation__link ks-navigation__link--menu"
+    for="ks-navigation__toggle">
+    Menu
+  </label>
+  <input class="ks-navigation__toggle" id="ks-navigation__toggle" type="checkbox" />
+
+  <ul class="ks-navigation__items">
+    <li class="ks-navigation__item">
+      <a
+        {% if section !== 'videos' %}href="/videos"{% endif %}
+        class="ks-navigation__link">
+        Videos
+      </a>
+    </li>
+    <li class="ks-navigation__item">
+      <a
+        {% if section !== 'live' %}href="/live"{% endif %}
+        class="ks-navigation__link">
+        Live
+      </a>
+    </li>
+    <li class="ks-navigation__item">
+      <a
+        {% if section !== 'photos' %}href="/photos"{% endif %}
+        class="ks-navigation__link">
+        Photos
+      </a>
+    </li>
+    <li class="ks-navigation__item">
+      <a
+        {% if section !== 'info' %}href="/info"{% endif %}
+        class="ks-navigation__link">
+        Info
+      </a>
+    </li>
+    <li class="ks-navigation__item">
+      <a
+        {% if section !== 'contact' %}href="/contact"{% endif %}
+        class="ks-navigation__link">
+        Contact
+      </a>
+    </li>
+  </ul>
+</nav>
+
+{% endmacro %}

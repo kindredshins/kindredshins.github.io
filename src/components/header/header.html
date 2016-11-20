@@ -1,0 +1,15 @@
+{% import "./../navigation/navigation.html" as navigation %}
+
+{% macro template(page) %}
+
+<header class="ks-header" role="header">
+  {% if section === 'home' %}
+    <h1 class="ks-header__logo">Kindred Shins</h1>
+  {% else %}
+    <span class="ks-header__logo">Kindred Shins</span>
+  {% endif %}
+
+  {{ navigation.template(page.metadata.section) }}
+</header>
+
+{% endmacro %}

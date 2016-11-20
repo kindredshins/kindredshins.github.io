@@ -1,0 +1,31 @@
+@mixin u-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@mixin form-field {
+  border: 1px solid #363636;
+  text-transform: uppercase;
+  color: inherit;
+  padding: 0.3125em 0.5em;
+  font-size: 0.875em;
+
+  &:focus {
+    outline: none;
+    border-color: #555;
+  }
+}
+
+@mixin viusally-hidden {
+ position: absolute !important;
+ clip: rect(1px, 1px, 1px, 1px);
+ overflow: hidden;
+ height: 1px;
+ width: 1px;
+}

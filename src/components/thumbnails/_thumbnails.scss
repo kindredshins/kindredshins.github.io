@@ -1,0 +1,22 @@
+@import "styles/mixins";
+
+.ks-thumbnails {
+  @include reset-list;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.ks-thumbnails__item {
+  margin: 10px;
+}
+
+.ks-thumbnails__link {
+  display: block;
+  outline-offset: 1px;
+
+  &:not([href]) {
+    outline: 1px solid red;
+  }
+}

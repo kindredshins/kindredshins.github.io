@@ -1,0 +1,27 @@
+@keyframes spin {
+  0% { transform: translateX(-50%) translateY(-50%) rotate(0deg); }
+  100% { transform: translateX(-50%) translateY(-50%) rotate(360deg); }
+}
+
+.ks-l-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+
+  @media (min-height: 666px) {
+    background: url("/assets/images/lads.png") no-repeat center bottom;
+  }
+
+  @media (min-height: 925px) {
+    background-size: 1050px;
+  }
+
+  @media (max-width: 800px) {
+    background-size: 120%;
+  }
+}
+
+.ks-l-content--loading::before {
+  animation: spin 2s linear infinite;
+}

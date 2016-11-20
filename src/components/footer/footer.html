@@ -1,0 +1,35 @@
+{% import "./../icon/icon.html" as icon %}
+
+{% set template %}
+
+<footer class="ks-footer">
+  <ul class="ks-footer__nav">
+    <li class="ks-footer__nav-item">
+      <a href="https://www.instagram.com/kindredshins/" class="ks-footer__nav-link">
+        {{ icon.template('instagram') }}
+      </a>
+    </li>
+    <li class="ks-footer__nav-item">
+      <a href="https://www.facebook.com/kindred.shins.1/" class="ks-footer__nav-link">
+        {{ icon.template('facebook') }}
+      </a>
+    </li>
+    <li class="ks-footer__nav-item">
+      <a href="https://twitter.com/kindredshins" class="ks-footer__nav-link">
+        {{ icon.template('twitter') }}
+      </a>
+    </li class="ks-footer__nav-item">
+    <li class="ks-footer__nav-item">
+      <a href="https://soundcloud.com/kindredshins" class="ks-footer__nav-link">
+        {{ icon.template('soundcloud') }}
+      </a>
+    </li>
+    <li class="ks-footer__nav-item">
+      <a href="https://www.youtube.com/channel/UCB7dC0WRwZL9HqUdmZGHP3A" class="ks-footer__nav-link">
+        {{ icon.template('youtube') }}
+      </a>
+    </li>
+  </ul>
+</footer>
+
+{% endset %}

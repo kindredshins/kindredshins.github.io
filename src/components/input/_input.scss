@@ -1,0 +1,19 @@
+@import "styles/mixins";
+
+.ks-input {
+  @include form-field;
+
+  background: linear-gradient(to bottom, #000, #1e1e1e);
+}
+
+::-webkit-input-placeholder {
+  color: #555;
+}
+
+::-moz-placeholder {
+  color: #555;
+}
+
+:-ms-input-placeholder {
+  color: #555;
+}

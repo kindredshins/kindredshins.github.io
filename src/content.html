@@ -1,0 +1,17 @@
+{% import "./components/page-header/page-header.html" as pageHeader %}
+{% import "./components/mailing/mailing.html" as mailing %}
+{% import "./components/box/box.html" as box %}
+{% extends "./layout.html" %}
+
+{% block main %}
+  {% set sidebar %}
+    {{ pageHeader.template(page.title, name) }}
+    {{ mailing.template() }}
+  {% endset %}
+
+  {% set body %}
+    {{ typogr(page.html).typogrify() }}
+  {% endset %}
+
+  {{ box.template(body, sidebar) }}
+{% endblock %}

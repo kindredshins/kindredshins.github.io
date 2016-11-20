@@ -1,0 +1,12 @@
+{% import "./../field-group/field-group.html" as fieldGroup %}
+
+{% macro template(className='') %}
+
+<div class="ks-mailing {{ className }}">
+  <h2 class="ks-mailing__title">Can we spam you?</h2>
+  <p class="ks-mailing__tags">#nakedshins</p>
+
+  {{ fieldGroup.template('e.g. jane@gmail.com', 'Yes') }}
+</div>
+
+{% endmacro %}

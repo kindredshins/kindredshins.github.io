@@ -1,0 +1,19 @@
+{% import "./../mailing/mailing.html" as mailing %}
+
+{% macro template(body='', sidebar='') %}
+
+<section class="ks-box">
+  <div class="ks-box__inner">
+    {% if sidebar %}
+      <div class="ks-box__sidebar">
+        {{ sidebar }}
+      </div>
+    {% endif %}
+
+    <div class="ks-box__body">
+      {{ body }}
+    </div>
+  </div>
+</section>
+
+{% endmacro %}

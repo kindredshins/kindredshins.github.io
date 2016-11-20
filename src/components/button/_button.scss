@@ -1,0 +1,18 @@
+@import "styles/mixins";
+
+.ks-button {
+  @include form-field;
+
+  text-decoration: none;
+  display: inline-block;
+  background: linear-gradient(to bottom, #555, #000);
+  cursor: pointer;
+
+  &:active {
+    background: linear-gradient(to bottom, #000, #555);
+  }
+
+  &:hover {
+    color: inherit;
+  }
+}

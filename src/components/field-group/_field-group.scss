@@ -1,0 +1,23 @@
+.ks-field-group {
+  display: flex;
+  justify-content: center;
+}
+
+.ks-field-group__field {
+  & + & {
+    margin-left: -1px;
+  }
+}
+
+.ks-field-group__field--button {
+  border-left-color: transparent;
+
+  &:focus {
+    border-left-color: #363636;
+  }
+
+  .ks-field-group__field--input:focus + & {
+    border-color: #555;
+    border-left-color: transparent;
+  }
+}

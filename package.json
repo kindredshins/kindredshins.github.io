@@ -1,0 +1,26 @@
+{
+  "private": "true",
+  "scripts": {
+    "build": "./node_modules/.bin/wintersmith build --config 'wintersmith.json'",
+    "develop": "./node_modules/.bin/wintersmith preview --config 'wintersmith.json'",
+    "clean": "npm run clean:build && npm run clean:logs",
+    "clean:build": "rm -rf build",
+    "clean:logs": "rm -f npm-debug.log"
+  },
+  "dependencies": {
+    "lodash-fp": "^0.10.4",
+    "moment": "^2.16.0",
+    "normalize-scss": "^5.0.3",
+    "promise": "^7.1.1",
+    "svgxuse": "^1.1.22",
+    "typogr": "0.5.x",
+    "whatwg-fetch": "^1.0.0"
+  },
+  "devDependencies": {
+    "wintersmith": "^2.3.3",
+    "wintersmith-asis": "^0.1.7",
+    "wintersmith-browserify": "^1.1.0",
+    "wintersmith-nunjucks": "^1.1.0",
+    "wintersmith-sassify": "^1.0.1"
+  }
+}

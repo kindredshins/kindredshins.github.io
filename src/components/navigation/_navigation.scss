@@ -1,0 +1,85 @@
+@import "styles/mixins";
+
+$nav-horizontal-breakpoint: 685px;
+
+.ks-navigation {
+  padding: 15px;
+  position: relative;
+  font-size: 1.25rem;
+
+  @media (min-width: $nav-horizontal-breakpoint) {
+    display: table;
+    margin: 0 auto;
+  }
+}
+
+.ks-navigation__link--menu {
+  background: url("/assets/images/icons/hamburger.svg") no-repeat left center;
+  background-size: 26px;
+  padding-left: 28px;
+
+  @media (min-width: $nav-horizontal-breakpoint) {
+    display: none;
+  }
+}
+
+.ks-navigation__toggle {
+  display: none;
+}
+
+.ks-navigation__items {
+  @include reset-list;
+
+  @media (max-width: ($nav-horizontal-breakpoint - 1)) {
+    background-color: #000;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,.5);
+
+    .ks-navigation__toggle:not(:checked) + & {
+      display: none;
+    }
+  }
+
+  @media (min-width: $nav-horizontal-breakpoint) {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+.ks-navigation__item {
+  @media (max-width: ($nav-horizontal-breakpoint - 1)) {
+    border-top: 1px solid #222;
+  }
+
+  @media (min-width: $nav-horizontal-breakpoint) {
+    flex: 1;
+  }
+}
+
+.ks-navigation__link {
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  .ks-navigation__item & {
+    display: block;
+    padding: 15px 20px;
+
+    @media (min-width: $nav-horizontal-breakpoint) {
+      padding: 0 30px;
+    }
+  }
+}
+
+a.ks-navigation__link:not([href]) {
+  &,
+  &:hover {
+    cursor: default;
+    // color: #B3C6E2;
+    color: red;
+  }
+}

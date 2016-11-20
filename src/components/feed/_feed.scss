@@ -1,0 +1,47 @@
+@import "styles/mixins";
+
+.ks-feed {
+  @include reset-list;
+}
+
+.ks-feed__item {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  padding: 20px 0;
+}
+
+.ks-feed__body {
+  order: 1;
+  flex: 1 1 auto;
+}
+
+.ks-feed__title {
+  margin-top: 0;
+}
+
+.ks-feed__date {
+  order: 0;
+  background-color: #101216;
+  outline: 1px solid #25272A;
+  text-align: center;
+  flex: 0 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-right: 20px;
+}
+
+.ks-feed__day,
+.ks-feed__month {
+  font-size: 1.625em;
+}
+
+.ks-feed__month {
+  text-transform: uppercase;
+}
+
+.ks-feed__year {
+  font-size: 1.125em;
+  opacity: .5;
+}

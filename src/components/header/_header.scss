@@ -1,0 +1,13 @@
+@import "styles/mixins";
+
+.ks-header {
+  flex: 0 0 auto;
+  background: #000;
+  border-top: 1px solid #222;
+  position: relative;
+  z-index: 5;
+}
+
+.ks-header__logo {
+  @include viusally-hidden;
+}

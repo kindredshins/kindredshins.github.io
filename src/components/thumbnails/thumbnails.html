@@ -1,0 +1,15 @@
+{% macro template(items='') %}
+  <ul class="ks-thumbnails">{{ items }}</ul>
+{% endmacro %}
+
+{% macro item(item='', width='', height='', isActive='') %}
+  <li class="ks-thumbnails__item">
+    <a class="ks-thumbnails__link" {% if not isActive %}href="{{ item.index.url }}"{% endif %}>
+      <img
+        src="{{ item['thumbnail.jpg'].url }}"
+        width="{{ width }}"
+        height="{{ height }}"
+        title="{{ item.index.title }} thumbnail" />
+    </a>
+  </li>
+{% endmacro %}
