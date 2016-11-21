@@ -1,10 +1,11 @@
-{% macro template(placeholder='', value='', class='', type='text', size=30) %}
+{% macro template(name='', placeholder='', value='', class='', type='text', size=30) %}
 
   <input
     type="{{ type }}"
     class="ks-input {{ class }}"
     size="{{ size }}"
     placeholder="{{ placeholder }}"
-    value="{{ value }}">
+    value="{{ value }}"
+    name="{{ name }}">
 
 {% endmacro %}

@@ -3,6 +3,18 @@
   font-size: 1rem;
   margin: auto 0 0;
 
+  .mce_inline_error:not(input) {
+    width: 100%;
+    color: red;
+    order: 0;
+  }
+
+  .response,
+  .mce_inline_error:not(input) {
+    text-transform: none;
+    margin: -15px 0 10px;
+  }
+
   @media (max-width: 767px) {
     &:not(.ks-mailing--home) {
       margin-bottom: 30px;
