@@ -1,5 +1,5 @@
-var fetch = window.fetch || require('whatwg-fetch');
 var Promise = require('promise');
+require('whatwg-fetch');
 
 function FrameVideo(where, fps) {
   this._canvas = document.createElement('canvas');
