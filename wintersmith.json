@@ -13,7 +13,7 @@
     "wintersmith-asis",
     "wintersmith-sassify",
     "wintersmith-browserify",
-    "./plugins/utils.js"
+    "./src/plugins/utils.js"
   ],
   "require": {
     "moment": "moment",
