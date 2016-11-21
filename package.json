@@ -12,6 +12,7 @@
     "moment": "^2.16.0",
     "normalize-scss": "^5.0.3",
     "promise": "^7.1.1",
+    "soundcloud": "^3.1.2",
     "svgxuse": "^1.1.22",
     "typogr": "0.5.x",
     "whatwg-fetch": "^1.0.0"
