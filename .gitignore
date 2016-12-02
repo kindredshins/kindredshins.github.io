@@ -1,9 +1,8 @@
-
-*.sublime-workspace
-smoke.mp4
-node_modules
-background
-background-orig
 .DS_Store
+*.sublime-workspace
+node_modules
 npm-debug.log
-build
+/smoke.mp4
+/background
+/background-orig
+/build
