@@ -1,3 +1,11 @@
-.ks-player {
-  // display: none; // TODO
+.ks-player__play {
+  .ks-player--playing & {
+    display: none;
+  }
+}
+
+.ks-player__pause {
+  .ks-player:not(.ks-player--playing) & {
+    display: none;
+  }
 }
