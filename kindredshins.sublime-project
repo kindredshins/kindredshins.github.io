@@ -5,6 +5,9 @@
       "path": ".",
       "folder_exclude_patterns": [
         "node_modules",
+        "contents/styles",
+        "contents/scripts",
+        "contents/assets"
       ]
     }
   ],
