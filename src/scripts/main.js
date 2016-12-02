@@ -1,3 +1,3 @@
 require('svgxuse');
 require('./../components/background/background');
-require('./player');
+require('./../components/player/player');

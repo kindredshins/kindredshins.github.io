@@ -6,7 +6,11 @@
     "name": "Kindred Shins",
     "owner": "@kindredshins",
     "description": "Flamboyant, gun totting, smut peddling troubadours",
-    "analytics": "UA-87766910-1"
+    "analytics": "UA-87766910-1",
+    "soundcloud": {
+      "clientId": "9b7WBBIgYQSvaRV8DAZKzNlYBOZBs5YR",
+      "userId": 25135193
+    }
   },
   "plugins": [
     "wintersmith-nunjucks",
