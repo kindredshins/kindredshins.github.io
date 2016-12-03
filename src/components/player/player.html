@@ -1,11 +1,14 @@
-{% set template %}
+{% import "./../button/button.html" as button %}
+{% import "./../icon/icon.html" as icon %}
+
+{% macro template() %}
 
 <section class="ks-player">
-  <h2>Listen</h2>
-  <button type="button" class="ks-player__prev">prev</button>
-  <button type="button" class="ks-player__play">play</button>
-  <button type="button" class="ks-player__pause">pause</button>
-  <button type="button" class="ks-player__next">next</button>
+  <h2 class="ks-player__title">Listen</h2>
+  {{ button.template(icon.template('previous-track'), class='ks-player__btn ks-player__btn--prev') }}
+  {{ button.template(icon.template('play'), class='ks-player__btn ks-player__btn--play') }}
+  {{ button.template(icon.template('pause'), class='ks-player__btn ks-player__btn--pause') }}
+  {{ button.template(icon.template('next-track'), class='ks-player__btn ks-player__btn--next') }}
 </section>
 
-{% endset %}
+{% endmacro %}
