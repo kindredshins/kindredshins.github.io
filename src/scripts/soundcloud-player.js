@@ -35,7 +35,9 @@ ScPlayer.prototype = {
     var id = track.id;
     var isFirstPlay = !this.players[id];
 
+    // Get player from SoundCloud if it doesn't exist in cache
     this.players[id] = this.players[id] || SC.stream('/tracks/' + id);
+
     this.players[id].then(function (player) {
       this.title.textContent = track.title;
       this.context.classList.add(this.opts.playing);
@@ -51,11 +53,10 @@ ScPlayer.prototype = {
     var id = track.id;
 
     if (this.players[id]) {
-      this.players[id]
-        .then(function (player) {
-          this.context.classList.remove(this.opts.playing);
-          player.pause();
-        }.bind(this));
+      this.players[id].then(function (player) {
+        this.context.classList.remove(this.opts.playing);
+        player.pause();
+      }.bind(this));
     }
   },
 
