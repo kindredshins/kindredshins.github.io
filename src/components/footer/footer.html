@@ -5,6 +5,13 @@
 <footer class="ks-footer">
   <ul class="ks-footer__nav">
     <li class="ks-footer__nav-item">
+      <a
+        {% if section !== 'merch' %}href="/merch"{% endif %}
+        class="ks-footer__nav-link">
+        Merch
+      </a>
+    </li>
+    <li class="ks-footer__nav-item">
       <a href="https://www.instagram.com/kindredshins/" class="ks-footer__nav-link">
         {{ icon.template('instagram') }}
       </a>
@@ -27,6 +34,13 @@
     <li class="ks-footer__nav-item">
       <a href="https://www.youtube.com/channel/UCB7dC0WRwZL9HqUdmZGHP3A" class="ks-footer__nav-link">
         {{ icon.template('youtube') }}
+      </a>
+    </li>
+    <li class="ks-footer__nav-item">
+      <a
+        {% if section !== 'contact' %}href="/contact"{% endif %}
+        class="ks-footer__nav-link">
+        Contact
       </a>
     </li>
   </ul>
