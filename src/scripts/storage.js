@@ -1,6 +1,4 @@
-function Storage() {}
-
-Storage.prototype = {
+module.exports = {
   get: function get(key, expiry) {
     var store = window.localStorage.getItem(key);
     var now = new Date();
@@ -25,6 +23,4 @@ Storage.prototype = {
 
     window.localStorage.setItem(key, JSON.stringify(store));
   }
-}
-
-module.exports = new Storage();
+};
