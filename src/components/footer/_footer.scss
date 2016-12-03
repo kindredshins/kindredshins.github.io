@@ -21,6 +21,12 @@
   flex: 0 0 auto;
 }
 
+.ks-footer__nav-item--internal {
+  @media (max-width: 470px) {
+    display: none;
+  }
+}
+
 .ks-footer__nav-link {
   color: #fff;
   fill: #000;
@@ -28,3 +34,4 @@
   display: block;
   margin: 0.3125em 0.625em;
 }
+

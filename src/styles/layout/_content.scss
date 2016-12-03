@@ -3,16 +3,24 @@
   display: flex;
   flex-direction: column;
   padding: 40px 0;
+  position: relative;
+  background: url("/assets/images/lads.png") no-repeat center bottom;
+  background-size: auto 55%;
 
-  @media (min-height: 666px) {
-    background: url("/assets/images/lads.png") no-repeat center bottom;
-  }
+  &::before {
+    content: "";
+    background: url("/assets/images/logo-large.png") no-repeat top center;
+    background-size: auto 45%;
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    z-index: -1;
 
-  @media (min-height: 925px) {
-    background-size: 1050px;
-  }
-
-  @media (max-width: 800px) {
-    background-size: 120%;
+    @media (min-height: 925px) and (min-width: 765px) {
+      top: 55px;
+    }
   }
 }
