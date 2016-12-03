@@ -18,8 +18,15 @@ function getTracks(user) {
   return SC.get('/users/' + user + '/tracks')
     .then(function(res) {
       return res
-        .filter(function (track) { return track.streamable; })
-        .map(function (track) { return track.id; });
+        .filter(function (track) {
+          return track.streamable;
+        })
+        .map(function (track) {
+          return {
+            id: track.id,
+            title: track.title
+          };
+        });
     })
     .then(function (tracks) {
       // Store tracks so that we don't keep hitting the SoundCloud API
@@ -33,6 +40,7 @@ SC.initialize({ client_id: scConfig.clientId });
 getTracks(scConfig.userId).then(function (tracks) {
   var elem = document.querySelector('.ks-player');
   var player = new ScPlayer(elem, {
+    title: '.ks-player__track',
     playing: 'ks-player--playing',
     playBtn: '.ks-player__btn--play',
     pauseBtn: '.ks-player__btn--pause',
