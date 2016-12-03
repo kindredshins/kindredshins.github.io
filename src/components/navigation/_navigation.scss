@@ -59,6 +59,12 @@ $nav-horizontal-breakpoint: 685px;
   }
 }
 
+.ks-navigation__item--small {
+  @media (min-width: $nav-horizontal-breakpoint) {
+    display: none;
+  }
+}
+
 .ks-navigation__item--push {
   margin-right: 170px;
 }

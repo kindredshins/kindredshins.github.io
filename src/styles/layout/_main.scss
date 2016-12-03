@@ -1,32 +1,15 @@
 .ks-l-main {
   flex: 1 1 auto;
   position: relative;
-  margin: 0 0 30px;
-  min-height: 220px;
   display: flex;
   flex-direction: column;
+
+  .ks-page--home & {
+    margin-bottom: 30px;
+  }
 
   @media (min-height: 785px) {
     height: 220px;
     overflow: hidden;
-  }
-
-  &::before {
-    content: "";
-    background: url("/assets/images/logo-large.png") no-repeat top center;
-    background-size: contain;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    z-index: -1;
-    max-height: 300px;
-
-    @media (min-height: 925px) and (min-width: 765px) {
-      max-height: none;
-      bottom: 260px;
-    }
   }
 }
