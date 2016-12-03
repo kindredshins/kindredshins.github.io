@@ -22,7 +22,7 @@
   }
 }
 
-@mixin viusally-hidden {
+@mixin visually-hidden {
  position: absolute !important;
  clip: rect(1px, 1px, 1px, 1px);
  overflow: hidden;

@@ -59,6 +59,10 @@ $nav-horizontal-breakpoint: 685px;
   }
 }
 
+.ks-navigation__item--push {
+  margin-right: 170px;
+}
+
 .ks-navigation__link {
   color: #fff;
   text-decoration: none;

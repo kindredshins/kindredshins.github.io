@@ -34,10 +34,10 @@ getTracks(scConfig.userId).then(function (tracks) {
   var elem = document.querySelector('.ks-player');
   var player = new ScPlayer(elem, {
     playing: 'ks-player--playing',
-    playBtn: '.ks-player__play',
-    pauseBtn: '.ks-player__pause',
-    prevBtn: '.ks-player__prev',
-    nextBtn: '.ks-player__next'
+    playBtn: '.ks-player__btn--play',
+    pauseBtn: '.ks-player__btn--pause',
+    prevBtn: '.ks-player__btn--prev',
+    nextBtn: '.ks-player__btn--next'
   });
 
   player.init(tracks);

@@ -1,11 +1,69 @@
-.ks-player__play {
+@import "styles/mixins";
+
+.ks-player {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  margin-left: -6px;
+}
+
+.ks-player__title {
+  @include visually-hidden;
+}
+
+.ks-player__btn {
+  position: relative;
+  border-radius: 100%;
+  border-color: transparent;
+
+  .ks-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.ks-player__btn--play {
   .ks-player--playing & {
+    display: none;
+  }
+
+  .ks-icon {
+    margin-left: 4px;
+  }
+}
+
+.ks-player__btn--pause {
+  .ks-player:not(.ks-player--playing) & {
     display: none;
   }
 }
 
-.ks-player__pause {
-  .ks-player:not(.ks-player--playing) & {
-    display: none;
+.ks-player__btn--play,
+.ks-player__btn--pause {
+  width: 70px;
+  height: 70px;
+  margin: 0 6px;
+
+  .ks-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.ks-player__btn--next,
+.ks-player__btn--prev {
+  width: 40px;
+  height: 40px;
+
+  .ks-icon {
+    width: 16px;
+    height: 16px;
   }
 }
