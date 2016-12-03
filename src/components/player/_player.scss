@@ -15,6 +15,17 @@
   @include visually-hidden;
 }
 
+.ks-player__track {
+  margin: 0;
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  white-space: nowrap;
+  opacity: .5;
+  transform: translate(-50%, -100%);
+  text-transform: uppercase;
+}
+
 .ks-player__btn {
   position: relative;
   border-radius: 100%;

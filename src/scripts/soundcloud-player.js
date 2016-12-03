@@ -8,6 +8,7 @@ function ScPlayer(context, options) {
 
 ScPlayer.prototype = {
   init: function init(tracks) {
+    this.title = this.context.querySelector(this.opts.title);
     this.playBtn = this.context.querySelector(this.opts.playBtn);
     this.pauseBtn = this.context.querySelector(this.opts.pauseBtn);
     this.prevBtn = this.context.querySelector(this.opts.prevBtn);
@@ -31,10 +32,12 @@ ScPlayer.prototype = {
   },
 
   play: function play(track) {
-    var isFirstPlay = !this.players[track];
+    var id = track.id;
+    var isFirstPlay = !this.players[id];
 
-    this.players[track] = this.players[track] || SC.stream('/tracks/' + track);
-    this.players[track].then(function (player) {
+    this.players[id] = this.players[id] || SC.stream('/tracks/' + id);
+    this.players[id].then(function (player) {
+      this.title.textContent = track.title;
       this.context.classList.add(this.opts.playing);
       player.play();
 
@@ -45,8 +48,10 @@ ScPlayer.prototype = {
   },
 
   pause: function pause(track) {
-    if (this.players[track]) {
-      this.players[track]
+    var id = track.id;
+
+    if (this.players[id]) {
+      this.players[id]
         .then(function (player) {
           this.context.classList.remove(this.opts.playing);
           player.pause();
@@ -55,8 +60,8 @@ ScPlayer.prototype = {
   },
 
   stop: function stop() {
-    Object.keys(this.players).forEach(function (track) {
-      this.players[track].then(function (player) {
+    Object.keys(this.players).forEach(function (id) {
+      this.players[id].then(function (player) {
         player.seek(0);
       });
     }.bind(this));
@@ -72,16 +77,17 @@ ScPlayer.prototype = {
 
   change: function change(dir) {
     var loop = dir === 1 ? 0 : this.tracks.length - 1;
-    var track = this.tracks[this.currTrack + dir] ? this.currTrack + dir : loop;
+    var index = this.tracks[this.currTrack + dir] ? this.currTrack + dir : loop;
 
     this.stop();
-    this.play(this.tracks[track]);
-    this.currTrack = track;
+    this.play(this.tracks[index]);
+    this.currTrack = index;
   }
 };
 
 ScPlayer.defaults = {
   playing: '-is-playing',
+  title: '.title',
   playBtn: '.play',
   pauseBtn: '.pause',
   prevBtn: '.prev',
