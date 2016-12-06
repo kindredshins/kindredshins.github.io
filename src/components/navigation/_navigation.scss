@@ -1,4 +1,5 @@
 @import "styles/mixins";
+@import "styles/theme";
 
 $nav-horizontal-breakpoint: 685px;
 
@@ -89,7 +90,6 @@ a.ks-navigation__link:not([href]) {
   &,
   &:hover {
     cursor: default;
-    // color: #B3C6E2;
-    color: red;
+    color: $colour-primary;
   }
 }
