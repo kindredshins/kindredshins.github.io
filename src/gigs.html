@@ -16,7 +16,7 @@
   {% set body %}
     {% set feedItems %}
       {% set getContent = _.map('index') %}
-      {% set gigs = getContent(contents.live._.directories) %}
+      {% set gigs = getContent(contents.gigs._.directories) %}
       {% set pastGigs = env.helpers.past(gigs) %}
       {% set presentGigs = env.helpers.present(gigs) %}
 
