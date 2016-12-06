@@ -6,7 +6,7 @@
   {% set mDate = moment.utc(date) %}
 
   <li class="ks-feed__item">
-    <time class="ks-feed__date" datetime="date">
+    <time class="ks-feed__date" datetime="{{ mDate.format('YYYY-MM-DD') }}">
       <span class="ks-feed__day">{{ typogr(mDate.format('Do')).typogrify() }}</span>
       <span class="ks-feed__month">{{ mDate.format('MMM') }}</span>
       <span class="ks-feed__year">{{ mDate.format('YYYY') }}</span>
