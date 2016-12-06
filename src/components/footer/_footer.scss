@@ -1,4 +1,5 @@
 @import "styles/mixins";
+@import "styles/theme";
 
 .ks-footer {
   flex: 0 0 auto;
@@ -35,3 +36,10 @@
   margin: 0.3125em 0.625em;
 }
 
+a.ks-footer__nav-link:not([href]) {
+  &,
+  &:hover {
+    cursor: default;
+    color: $colour-primary;
+  }
+}
