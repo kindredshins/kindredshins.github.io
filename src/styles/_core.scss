@@ -1,3 +1,5 @@
+@import "styles/theme";
+
 html {
   height: 100%;
   font-size: 16px;
@@ -28,7 +30,7 @@ a {
   transition: color 300ms;
 
   &:hover {
-    color: red;
+    color: $colour-primary;
   }
 
   &:not([href]) {
@@ -46,7 +48,7 @@ img {
 }
 
 .ks-highlight {
-  color: red;
+  color: $colour-primary;
   text-transform: uppercase;
 }
 

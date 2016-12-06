@@ -1,3 +1,5 @@
+@import "styles/theme";
+
 .ks-mailing {
   text-transform: uppercase;
   font-size: 1rem;
@@ -5,7 +7,7 @@
 
   .mce_inline_error:not(input) {
     width: 100%;
-    color: red;
+    color: $colour-primary;
     order: 0;
   }
 

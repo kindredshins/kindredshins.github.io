@@ -1,4 +1,5 @@
 @import "styles/mixins";
+@import "styles/theme";
 
 .ks-thumbnails {
   @include reset-list;
@@ -17,6 +18,6 @@
   outline-offset: 1px;
 
   &:not([href]) {
-    outline: 1px solid red;
+    outline: 1px solid $colour-primary;
   }
 }
