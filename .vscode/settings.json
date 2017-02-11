@@ -1,0 +1,9 @@
+{
+  "search.exclude": {
+    "**/dist": true,
+    "**/node_modules": true,
+    "./contents/styles": true,
+    "./contents/scripts": true,
+    "./contents/assets": true
+  }
+}
