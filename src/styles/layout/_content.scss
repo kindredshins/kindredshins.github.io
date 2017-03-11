@@ -15,9 +15,7 @@
     position: absolute;
     width: 100%;
     top: 30px;
-    left: 50%;
     bottom: 0;
-    transform: translateX(-50%);
     z-index: -1;
 
     @media (min-height: 925px) and (min-width: 765px) {

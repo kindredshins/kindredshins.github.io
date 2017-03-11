@@ -29,3 +29,10 @@
  height: 1px;
  width: 1px;
 }
+
+@mixin scrollbar {
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  scrollbar-base-color: #000;
+  scrollbar-arrow-color: #000;
+  scrollbar-shadow-color: #000;
+}
