@@ -9,8 +9,8 @@ $nav-horizontal-breakpoint: 685px;
   font-size: 1.25rem;
 
   @media (min-width: $nav-horizontal-breakpoint) {
-    display: table;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
 }
 
@@ -46,17 +46,12 @@ $nav-horizontal-breakpoint: 685px;
 
   @media (min-width: $nav-horizontal-breakpoint) {
     display: flex;
-    flex-wrap: wrap;
   }
 }
 
 .ks-navigation__item {
   @media (max-width: ($nav-horizontal-breakpoint - 1)) {
     border-top: 1px solid #222;
-  }
-
-  @media (min-width: $nav-horizontal-breakpoint) {
-    flex: 1;
   }
 }
 
