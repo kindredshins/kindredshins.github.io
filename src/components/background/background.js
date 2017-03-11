@@ -1,4 +1,4 @@
-var FrameVideo = require('./../../scripts/frame-video');
+var FrameVideo = require('./../../shared/frame-video');
 var where = document.querySelector('#ks-background');
 var video = new FrameVideo(where, 24);
 
