@@ -16,25 +16,27 @@
     <link rel="stylesheet" href="/styles/main.css">
   </head>
   <body class="ks-page ks-page--{{ page.metadata.section }}">
-    {{ header.template(name, page) }}
+    <div class="ks-page__wrapper">
+      {{ header.template(name, page) }}
 
-    <div class="ks-l-content">
-      <main class="ks-l-main" role="main">
-        {% block main %}
-        {% endblock %}
-      </main>
+      <div class="ks-l-content">
+        <main class="ks-l-main" role="main">
+          {% block main %}
+          {% endblock %}
+        </main>
 
-      <aside class="ks-l-aside">
-        {{ player.template() }}
+        <aside class="ks-l-aside">
+          {{ player.template() }}
 
-        {% block aside %}
-        {% endblock %}
-      </aside>
+          {% block aside %}
+          {% endblock %}
+        </aside>
+      </div>
+
+      {{ footer.template(page.metadata.section) }}
     </div>
 
-    {{ footer.template(page.metadata.section) }}
     {{ background.template() }}
-
     <script src="/index.js"></script>
 
     {% if env.mode === 'build' %}
