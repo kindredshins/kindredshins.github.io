@@ -13,17 +13,6 @@
 {% block main %}
   {% set sidebar %}
     {{ pageHeader.template(media.index.title, name) }}
-
-    {% set thumbnailItems %}
-      {% for item in items %}
-        {% set isActive = true if isMediaHome and loop.first else page.url === item.index.url %}
-
-        {{ thumbnails.item(item, 66, 62, isActive) }}
-      {% endfor %}
-    {% endset %}
-
-    {{ thumbnails.template(thumbnailItems) }}
-
     {{ mailing.template() }}
   {% endset %}
 
