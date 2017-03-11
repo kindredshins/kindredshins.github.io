@@ -1,3 +1,5 @@
+var Promise = require('promise');
+
 function FrameVideoImage(image) {
   var props = {
     canvas: null,

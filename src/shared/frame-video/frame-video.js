@@ -1,5 +1,3 @@
-require('whatwg-fetch');
-var Promise = require('promise');
 var FrameVideoImage = require('./frame-video-image');
 
 function FrameVideo(where, fps) {
@@ -32,7 +30,7 @@ function FrameVideo(where, fps) {
   }
 
   function init(framesPath) {
-    fetch(framesPath)
+    window.fetch(framesPath)
       .then(function(response) {
         return response.json();
       })

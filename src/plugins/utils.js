@@ -24,9 +24,14 @@ function present(items) {
   return sortByDateAsc(items).filter(isPresent(diff));
 }
 
+function log(value) {
+  console.log(value);
+}
+
 module.exports = (env, callback) => {
   env.helpers.past = past;
   env.helpers.present = present;
+  env.helpers.log = log;
 
   callback();
 };

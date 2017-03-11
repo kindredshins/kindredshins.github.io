@@ -84,6 +84,7 @@ function Soundcloud() {
   return {
     play: play,
     pause: pause,
+    stop: stop,
     getTracks: getTracks
   };
 };
