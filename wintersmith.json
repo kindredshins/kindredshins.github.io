@@ -10,6 +10,10 @@
     "soundcloud": {
       "clientId": "9b7WBBIgYQSvaRV8DAZKzNlYBOZBs5YR",
       "userId": 25135193
+    },
+    "instagram": {
+      "userId": "self",
+      "token": "587753159.5f912d0.6cd7c59331a0462b808b1cedd091cd0d"
     }
   },
   "plugins": [
