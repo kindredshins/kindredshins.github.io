@@ -1,118 +1,123 @@
 var Promise = require('promise');
 var soundcloud = require('./../../shared/soundcloud');
 
-function SoundcloudPlayer(context) {
-  this.context = context;
-  this.classNames = {
-    title: '.ks-player__track',
-    playing: 'ks-player--playing',
-    playBtn: '.ks-player__btn--play',
-    pauseBtn: '.ks-player__btn--pause',
-    prevBtn: '.ks-player__btn--prev',
-    nextBtn: '.ks-player__btn--next'
+(function(context) {
+  var props = {
+    context: null,
+    tracks: null,
+    trackIndex: null,
+    title: null,
+    playBtn: null,
+    pauseBtn: null,
+    prevBtn: null,
+    nextBtn: null,
+    classNames: {
+      title: '.ks-player__track',
+      playing: 'ks-player--playing',
+      playBtn: '.ks-player__btn--play',
+      pauseBtn: '.ks-player__btn--pause',
+      prevBtn: '.ks-player__btn--prev',
+      nextBtn: '.ks-player__btn--next'
+    }
   };
 
-  soundcloud.getTracks()
-    .then(this.init.bind(this));
-}
+  function create() {
+    props.context = context;
+    soundcloud.getTracks().then(init);
+  }
 
-SoundcloudPlayer.prototype = {
-  init: function init(tracks) {
-    this.tracks = tracks;
-    this.trackIndex = Math.floor(Math.random() * this.tracks.length);
-    this.title = this.context.querySelector(this.classNames.title);
-    this.playBtn = this.context.querySelector(this.classNames.playBtn);
-    this.pauseBtn = this.context.querySelector(this.classNames.pauseBtn);
-    this.prevBtn = this.context.querySelector(this.classNames.prevBtn);
-    this.nextBtn = this.context.querySelector(this.classNames.nextBtn);
+  function init(tracks) {
+    props.tracks = tracks;
+    props.trackIndex = Math.floor(Math.random() * props.tracks.length);
+    props.title = props.context.querySelector(props.classNames.title);
+    props.playBtn = props.context.querySelector(props.classNames.playBtn);
+    props.pauseBtn = props.context.querySelector(props.classNames.pauseBtn);
+    props.prevBtn = props.context.querySelector(props.classNames.prevBtn);
+    props.nextBtn = props.context.querySelector(props.classNames.nextBtn);
 
-    this.nextBtn.addEventListener('click', this.next.bind(this));
-    this.prevBtn.addEventListener('click', this.prev.bind(this));
-    this.playBtn.addEventListener('click', this.play.bind(this));
-    this.pauseBtn.addEventListener('click', this.pause.bind(this));
+    props.nextBtn.addEventListener('click', next);
+    props.prevBtn.addEventListener('click', prev);
+    props.playBtn.addEventListener('click', play);
+    props.pauseBtn.addEventListener('click', pause);
 
-    this.play();
-  },
+    play();
+  }
 
-  getCurrTrack: function getCurrTrack() {
-    return this.tracks[this.trackIndex];
-  },
+  function getCurrTrack() {
+    return props.tracks[props.trackIndex];
+  }
 
-  setCurrentTrack: function setCurrentTrack(index) {
-    this.trackIndex = index;
-
+  function setCurrentTrack(index) {
+    props.trackIndex = index;
     return true;
-  },
+  }
 
-  toggleClass: function toggleClass(className, add) {
-    this.context.classList[add ? 'add' : 'remove'](className);
-
+  function toggleClass(className, add) {
+    props.context.classList[add ? 'add' : 'remove'](className);
     return true;
-  },
+  }
 
-  setTitle: function setTitle(title) {
-    this.title.textContent = title;
-
+  function setTitle(title) {
+    props.title.textContent = title;
     return true;
-  },
+  }
 
-  bindFinish: function bindFinish(res) {
+  function bindFinish(res) {
     if (res.isFirstPlay) {
-      res.player.on('finish', this.next.bind(this));
+      res.player.on('finish', next);
     }
-
     return true;
-  },
+  }
 
-  play: function play(event) {
-    var track = this.getCurrTrack();
+  function play(event) {
+    var track = getCurrTrack();
 
     soundcloud.play(track.id)
-      .then(this.bindFinish.bind(this))
-      .then(this.setTitle.bind(this, track.title))
-      .then(this.toggleClass.bind(this, this.classNames.playing, true))
-      .then(function () {
+      .then(bindFinish)
+      .then(setTitle.bind(null, track.title))
+      .then(toggleClass.bind(null, props.classNames.playing, true))
+      .then(function() {
         if (event) {
-          this.pauseBtn.focus();
+          props.pauseBtn.focus();
         }
-      }.bind(this));
-  },
+      });
+  }
 
-  pause: function pause(event) {
-    var track = this.getCurrTrack();
+  function pause(event) {
+    var track = getCurrTrack();
 
     soundcloud.pause(track.id)
-      .then(this.toggleClass.bind(this, this.classNames.playing, false))
-      .then(function () {
+      .then(toggleClass.bind(null, props.classNames.playing, false))
+      .then(function() {
         if (event) {
-          this.playBtn.focus();
+          props.playBtn.focus();
         }
-      }.bind(this));
-  },
+      });
+  }
 
-  stop: function stop() {
-    var track = this.getCurrTrack();
+  function stop() {
+    var track = getCurrTrack();
 
     soundcloud.stop(track.id);
-  },
-
-  next: function next() {
-    this.change(1);
-  },
-
-  prev: function prev() {
-    this.change(-1);
-  },
-
-  change: function change(dir) {
-    var loopIndex = dir === 1 ? 0 : this.tracks.length - 1;
-    var tryIndex = this.trackIndex + dir;
-    var index = this.tracks[tryIndex] ? tryIndex : loopIndex;
-
-    this.stop();
-    this.setCurrentTrack(index);
-    this.play();
   }
-};
 
-module.exports = new SoundcloudPlayer(document.querySelector('.ks-player'));
+  function next() {
+    change(1);
+  }
+
+  function prev() {
+    change(-1);
+  }
+
+  function change(direction) {
+    var loopIndex = direction === 1 ? 0 : props.tracks.length - 1;
+    var tryIndex = props.trackIndex + direction;
+    var index = props.tracks[tryIndex] ? tryIndex : loopIndex;
+
+    stop();
+    setCurrentTrack(index);
+    play();
+  }
+
+  create();
+})(document.querySelector('.ks-player'));

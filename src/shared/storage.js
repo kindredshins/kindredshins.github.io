@@ -1,5 +1,5 @@
 module.exports = {
-  get: function get(key, expiry) {
+  get: function(key, expiry) {
     var store = window.localStorage.getItem(key);
     var now = new Date();
 
@@ -15,7 +15,7 @@ module.exports = {
     return store ? store.data : null;
   },
 
-  set: function set(key, value) {
+  set: function(key, value) {
     var store = {
       added: new Date(),
       data: value

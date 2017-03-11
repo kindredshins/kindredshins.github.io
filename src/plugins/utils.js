@@ -4,7 +4,7 @@ var moment = require('moment');
 var sortByDate = _.sortByOrder(_.get('date'));
 var sortByDateDesc = sortByDate(false);
 var sortByDateAsc = sortByDate(true);
-var isPeriod = _.curry(function (operator, fn, item) {
+var isPeriod = _.curry(function(operator, fn, item) {
   return operator(0, fn(item.metadata.date));
 });
 

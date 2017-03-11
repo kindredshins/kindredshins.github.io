@@ -4,12 +4,12 @@ var config = require('./../../wintersmith');
 var scConfig = config.locals.soundcloud;
 var SC = require('soundcloud');
 
-SC.initialize({ client_id: scConfig.clientId });
+function Soundcloud() {
+  var props = {
+    players: {}
+  };
 
-module.exports = {
-  players: {},
-
-  getTracks: function getTracks() {
+  function getTracks() {
     var user = scConfig.userId;
     var day = 60 * 60 * 24000;
     var tracks = storage.get('tracks', day);
@@ -21,36 +21,38 @@ module.exports = {
 
     // Otherwise get tracks from the SoundCloud API
     return SC.get('/users/' + user + '/tracks')
-      .then(function(res) {
-        return res
-          .filter(function (track) {
-            return track.streamable;
-          })
-          .map(function (track) {
-            return {
-              id: track.id,
-              title: track.title
-            };
-          });
-      })
-      .then(function (tracks) {
+      .then(getStreamableTracks)
+      .then(function(tracks) {
         // Store tracks so that we don't keep hitting the SoundCloud API
         storage.set('tracks', tracks);
         return tracks;
       });
-  },
+  }
 
-  getPlayer: function(trackId) {
+  function getStreamableTracks(tracks) {
+    return tracks
+      .filter(function(track) {
+        return track.streamable;
+      })
+      .map(function(track) {
+        return {
+          id: track.id,
+          title: track.title
+        };
+      });
+  }
+
+  function getPlayer(trackId) {
     return SC.stream('/tracks/' + trackId);
-  },
+  }
 
-  play: function play(trackId) {
-    var isFirstPlay = !this.players[trackId];
+  function play(trackId) {
+    var isFirstPlay = !props.players[trackId];
 
     // Get player from SoundCloud if it doesn't exist in cache
-    this.players[trackId] = this.players[trackId] || this.getPlayer(trackId);
+    props.players[trackId] = props.players[trackId] || getPlayer(trackId);
 
-    return this.players[trackId].then(function (player) {
+    return props.players[trackId].then(function(player) {
       // Fixes https://github.com/soundcloud/soundcloud-javascript/issues/39
       if (player.options.protocols[0] === 'rtmp') {
           player.options.protocols.reverse();
@@ -62,21 +64,31 @@ module.exports = {
         player: player,
         isFirstPlay: isFirstPlay
       };
-    }.bind(this));
-  },
+    });
+  }
 
-  pause: function pause(trackId) {
-    return this.players[trackId] && this.players[trackId].then(function (player) {
+  function pause(trackId) {
+    return props.players[trackId] && props.players[trackId].then(function(player) {
       player.pause();
       return player;
-    }.bind(this));
-  },
+    });
+  }
 
-  stop: function stop(trackId) {
-    return this.players[trackId].then(function (player) {
+  function stop(trackId) {
+    return props.players[trackId].then(function(player) {
       player.seek(0);
       return player;
     });
-  },
+  }
+
+  return {
+    play: play,
+    pause: pause,
+    getTracks: getTracks
+  };
 };
+
+SC.initialize({ client_id: scConfig.clientId });
+
+module.exports = Soundcloud();
 
