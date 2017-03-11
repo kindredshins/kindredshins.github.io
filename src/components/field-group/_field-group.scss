@@ -5,7 +5,7 @@
 }
 
 .ks-field-group__field {
-  order: 1;
+  flex: 1 1 0%;
 
   & + & {
     margin-left: -1px;
@@ -14,6 +14,7 @@
 
 .ks-field-group__field--button {
   border-left-color: transparent;
+  flex: 0 0 auto;
 
   &:focus {
     border-left-color: #363636;
