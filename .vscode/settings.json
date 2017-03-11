@@ -3,7 +3,8 @@
     "**/dist": true,
     "**/node_modules": true,
     "./contents/styles": true,
-    "./contents/scripts": true,
+    "./contents/shared": true,
     "./contents/assets": true
-  }
+  },
+  "eslint.enable": false
 }

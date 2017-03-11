@@ -101,7 +101,7 @@ FrameVideoImage.prototype = {
     return this;
   },
 
-  getWidth: function getHeight() {
+  getWidth: function getWidth() {
     return this.canvas.width / 2;
   },
 
