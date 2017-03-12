@@ -62,7 +62,9 @@ $nav-horizontal-breakpoint: 685px;
 }
 
 .ks-navigation__item--push {
-  margin-right: 170px;
+  @media (min-width: $nav-horizontal-breakpoint) {
+    margin-right: 170px;
+  }
 }
 
 .ks-navigation__link {
