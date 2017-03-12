@@ -1,6 +1,7 @@
 {
-  "private": "true",
+  "private": true,
   "scripts": {
+    "deploy": "npm run clean && npm run build && ./deploy.sh",
     "build": "./node_modules/.bin/wintersmith build --config 'wintersmith.json'",
     "develop": "./node_modules/.bin/wintersmith preview --config 'wintersmith.json'",
     "clean": "npm run clean:build && npm run clean:logs",
