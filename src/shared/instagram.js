@@ -1,14 +1,12 @@
-var fetchJsonp = require('fetch-jsonp');
-var wsConfig = require('./../../wintersmith');
-var config = wsConfig.locals.instagram;
+var wintersmith = require('./../../wintersmith');
 
-function Instagram() {
-  props = {
-    url: 'http://api.instagram.com/v1/users/' + config.userId + '/media/recent?access_token=' + config.token
+module.exports = (function(fetch, config) {
+  var props = {
+    url: config.apiUrl + 'users/' + config.userId + '/media/recent?access_token=' + config.token
   };
 
   function getPhotos() {
-    return fetchJsonp(props.url)
+    return fetch(props.url)
       .then(function(response) {
         return response.json();
       })
@@ -16,7 +14,7 @@ function Instagram() {
   }
 
   function reduceResponse(photos) {
-    return photos.data.map(function (photo) {
+    return photos.data.map(function(photo) {
       return {
         src: photo.images.low_resolution.url,
         url: photo.link
@@ -27,6 +25,7 @@ function Instagram() {
   return {
     getPhotos: getPhotos
   };
-}
-
-module.exports = Instagram();
+})(
+  require('fetch-jsonp'),
+  wintersmith.locals.instagram
+);
