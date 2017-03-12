@@ -2,10 +2,23 @@ var instagram = require('./../../shared/instagram');
 
 (function(context) {
   function create() {
-    instagram.getPhotos().then(init);
+    if (context) {
+      instagram.getPhotos().then(init);
+    }
   }
 
   function init(photos) {
+    var fragment = buildPhotos(photos);
+
+    // empty context
+    while (context.hasChildNodes()) {
+        context.removeChild(context.lastChild);
+    }
+
+    context.appendChild(fragment);
+  }
+
+  function buildPhotos(photos) {
     var fragment = window.document.createDocumentFragment();
 
     photos.forEach(function(photo) {
@@ -23,11 +36,7 @@ var instagram = require('./../../shared/instagram');
       fragment.appendChild(item);
     });
 
-    while (context.hasChildNodes()) {
-        context.removeChild(context.lastChild);
-    }
-
-    context.appendChild(fragment);
+    return fragment;
   }
 
   create();
