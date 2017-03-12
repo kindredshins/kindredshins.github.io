@@ -2225,7 +2225,7 @@ module.exports={
     "instagram": {
       "userId": "self",
       "token": "587753159.5f912d0.6cd7c59331a0462b808b1cedd091cd0d",
-      "apiUrl": "http://api.instagram.com/v1/"
+      "apiUrl": "https://api.instagram.com/v1/"
     }
   },
   "plugins": [
