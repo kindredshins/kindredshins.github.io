@@ -1,4 +1,0 @@
-
-# Kindred Shins
-
-WIP

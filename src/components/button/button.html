@@ -1,9 +1,0 @@
-{% macro template(text='', class='', type='submit', href='') %}
-
-  {% if href %}
-    <a href="{{ href }}" class="ks-button {{ class }}">{{ text }}</a>
-  {% else %}
-    <button type="{{ type }}" class="ks-button {{ class }}">{{ text }}</button>
-  {% endif %}
-
-{% endmacro %}
