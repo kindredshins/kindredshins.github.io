@@ -9,7 +9,7 @@
   .mce_inline_error:not(input) {
     width: 100%;
     color: $colour-primary;
-    order: 0;
+    order: -1;
   }
 
   .response,
