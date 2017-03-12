@@ -1,12 +1,12 @@
-var Promise = require('promise');
-
-function FrameVideoImage(image) {
+module.exports = (function(Promise) {
   var props = {
+    image: null,
     canvas: null,
     context: null,
   };
 
-  function create() {
+  function create(image) {
+    props.image = image;
     props.canvas = document.createElement('canvas');
     props.context = props.canvas.getContext('2d');
 
@@ -23,19 +23,19 @@ function FrameVideoImage(image) {
 
   function init() {
     return new Promise(function(resolve, reject) {
-      if (image.complete) {
-        resolve(image);
+      if (props.image.complete) {
+        resolve(props.image);
       } else {
-        image.addEventListener('load', resolve.bind(null, image));
+        props.image.addEventListener('load', resolve.bind(null, props.image));
       }
     });
   }
 
   function draw(img) {
-    props.canvas.width = image.width / 4;
-    props.canvas.height = image.height / 4;
+    props.canvas.width = props.image.width / 4;
+    props.canvas.height = props.image.height / 4;
 
-    props.context.drawImage(image, 0, 0,  props.canvas.width,  props.canvas.height);
+    props.context.drawImage(props.image, 0, 0,  props.canvas.width,  props.canvas.height);
     props.context.drawImage(props.canvas, 0, 0, getWidth(), getHeight());
 
     return img;
@@ -49,7 +49,5 @@ function FrameVideoImage(image) {
     return props.canvas.height / 2;
   }
 
-  return create();
-}
-
-module.exports = FrameVideoImage;
+  return create;
+})(require('promise'));

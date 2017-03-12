@@ -1,16 +1,16 @@
-var Promise = require('promise');
-var storage = require('./storage');
-var config = require('./../../wintersmith');
-var scConfig = config.locals.soundcloud;
-var SC = require('soundcloud');
+var wintersmith = require('./../../wintersmith');
 
-function Soundcloud() {
+module.exports = (function(Promise, storage, config, SC) {
   var props = {
     players: {}
   };
 
+  function init() {
+    SC.initialize({ client_id: config.clientId });
+  }
+
   function getTracks() {
-    var user = scConfig.userId;
+    var user = config.userId;
     var day = 60 * 60 * 24000;
     var tracks = storage.get('tracks', day);
 
@@ -82,14 +82,16 @@ function Soundcloud() {
   }
 
   return {
+    init: init,
     play: play,
     pause: pause,
     stop: stop,
     getTracks: getTracks
   };
-};
-
-SC.initialize({ client_id: scConfig.clientId });
-
-module.exports = Soundcloud();
+})(
+  require('promise'),
+  require('./storage'),
+  wintersmith.locals.soundcloud,
+  require('soundcloud')
+);
 

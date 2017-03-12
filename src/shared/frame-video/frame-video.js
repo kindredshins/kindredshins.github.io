@@ -1,6 +1,4 @@
-var FrameVideoImage = require('./frame-video-image');
-
-function FrameVideo(where, fps) {
+module.exports = (function(FrameVideoImage, fetch, requestAnimationFrame) {
   var props = {
     canvas: null,
     context: null,
@@ -12,7 +10,11 @@ function FrameVideo(where, fps) {
     then: null
   };
 
-  function create() {
+  function create(where, fps) {
+    if (!where) {
+      return;
+    }
+
     props.canvas = document.createElement('canvas');
     props.context = props.canvas.getContext('2d');
     props.width = props.canvas.width = document.body.clientWidth;
@@ -30,7 +32,7 @@ function FrameVideo(where, fps) {
   }
 
   function init(framesPath) {
-    window.fetch(framesPath)
+    fetch(framesPath)
       .then(function(response) {
         return response.json();
       })
@@ -53,7 +55,7 @@ function FrameVideo(where, fps) {
   function loop(images, frame) {
     frame = frame || 0;
 
-    window.requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
       props.images[frame] = props.images[frame] || FrameVideoImage(images[frame]);
 
       props.images[frame].then(function(image) {
@@ -84,7 +86,9 @@ function FrameVideo(where, fps) {
     return false;
   }
 
-  return create();
-}
-
-module.exports = FrameVideo;
+  return create;
+})(
+  require('./frame-video-image'),
+  window.fetch,
+  window.requestAnimationFrame
+);

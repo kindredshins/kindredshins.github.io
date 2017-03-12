@@ -1,6 +1,6 @@
-module.exports = {
-  get: function(key, expiry) {
-    var store = window.localStorage.getItem(key);
+module.exports = (function(storage) {
+  function get(key, expiry) {
+    var store = storage.getItem(key);
     var now = new Date();
 
     expiry = expiry || 0;
@@ -8,19 +8,24 @@ module.exports = {
 
     // Don't use stored data if it's expired
     if (store && (now - store.added) > expiry) {
-      window.localStorage.removeItem(key);
+      storage.removeItem(key);
       store = null;
     }
 
     return store ? store.data : null;
-  },
+  }
 
-  set: function(key, value) {
+  function set(key, value) {
     var store = {
       added: new Date(),
       data: value
     };
 
-    window.localStorage.setItem(key, JSON.stringify(store));
+    storage.setItem(key, JSON.stringify(store));
   }
-};
+
+  return {
+    get: get,
+    set: set
+  };
+})(window.localStorage);

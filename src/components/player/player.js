@@ -1,7 +1,4 @@
-var Promise = require('promise');
-var soundcloud = require('./../../shared/soundcloud');
-
-(function(context) {
+(function(Promise, soundcloud, context) {
   var props = {
     context: null,
     tracks: null,
@@ -23,7 +20,11 @@ var soundcloud = require('./../../shared/soundcloud');
 
   function create() {
     props.context = context;
-    soundcloud.getTracks().then(init);
+
+    if (props.context) {
+      soundcloud.init();
+      soundcloud.getTracks().then(init);
+    }
   }
 
   function init(tracks) {
@@ -120,4 +121,8 @@ var soundcloud = require('./../../shared/soundcloud');
   }
 
   create();
-})(document.querySelector('.ks-player'));
+})(
+  require('promise'),
+  require('./../../shared/soundcloud'),
+  document.querySelector('.ks-player')
+);
