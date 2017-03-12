@@ -9,3 +9,4 @@ if (!window.fetch) {
 require('svgxuse');
 require('./components/background/background');
 require('./components/player/player');
+require('./components/photos/photos');

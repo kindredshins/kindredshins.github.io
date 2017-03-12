@@ -1,5 +1,5 @@
 ---
 title: Photos
 section: photos
-template: media.html
+template: photos.html
 ---
