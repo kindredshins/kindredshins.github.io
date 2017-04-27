@@ -2,6 +2,7 @@
 {% import "./components/player/player.html" as player %}
 {% import "./components/background/background.html" as background %}
 {% import "./components/footer/footer.html" as footer %}
+{% import "./components/loader/loader.html" as loader %}
 
 <!doctype html>
 <html lang="en">
@@ -21,9 +22,10 @@
       {{ header.template(name, page) }}
 
       <div class="ks-l-content">
-        <main class="ks-l-main" role="main">
+        <main id="main" class="ks-l-main" role="main">
           {% block main %}
           {% endblock %}
+          {{ loader.template() }}
         </main>
 
         <aside class="ks-l-aside">

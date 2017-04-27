@@ -1,8 +1,16 @@
 var instagram = require('./../../shared/instagram');
 
-(function(context) {
+module.exports = (function() {
+  var instagramPhotos;
+  var context;
+
   function create() {
-    if (context) {
+    context = document.querySelector('.ks-photos');
+
+    if (instagramPhotos) {
+      init(instagramPhotos);
+    } else {
+      document.body.classList.add('is-loading');
       instagram.getPhotos().then(init);
     }
   }
@@ -10,12 +18,9 @@ var instagram = require('./../../shared/instagram');
   function init(photos) {
     var fragment = buildPhotos(photos);
 
-    // empty context
-    while (context.hasChildNodes()) {
-        context.removeChild(context.lastChild);
-    }
-
+    instagramPhotos = photos;
     context.appendChild(fragment);
+    document.body.classList.remove('is-loading');
   }
 
   function buildPhotos(photos) {
@@ -39,5 +44,7 @@ var instagram = require('./../../shared/instagram');
     return fragment;
   }
 
-  create();
-})(document.querySelector('.ks-photos'))
+  return {
+    create: create
+  };
+})();
